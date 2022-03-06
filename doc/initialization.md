@@ -27,3 +27,16 @@ Prettier
     ]
 }
 ```
+
+#### set up eslint for VSCode
+.vscode/settings.json
+```
+{
+    "eslint.validation": ["javascript", "javascriptreact"],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    } 
+}
+```
+Ref: https://www.digitalocean.com/community/tutorials/linting-and-formatting-with-eslint-in-vs-code
+Ref: https://www.udemy.com/course/react-testing-library/learn/lecture/30045082#notes
