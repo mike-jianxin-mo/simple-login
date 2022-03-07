@@ -1,32 +1,32 @@
-import React, { useReducer } from 'react'
-import { initialState, AuthReducer } from './reducer'
+import React, { useReducer } from "react";
+import { initialState, AuthReducer } from "./reducer";
 
-const AuthStateContext = React.createContext()
-const AuthDispatchContext = React.createContext()
+const AuthStateContext = React.createContext();
+const AuthDispatchContext = React.createContext();
 
 export function useAuthState() {
-    const context = React.useContext(AuthStateContext)
+    const context = React.useContext(AuthStateContext);
 
-    if (context === undefined ) {
+    if (context === undefined) {
         // [ToQ] why context would be null?
-        throw new Error('useAuthState must be used within a AuthProvider')
+        throw new Error("useAuthState must be used within a AuthProvider");
     }
 
     return context;
 }
 
 export function useAuthDispatch() {
-    const context = React.useContext(AuthDispatchContext)
+    const context = React.useContext(AuthDispatchContext);
 
     if (context === undefined) {
-        throw new Error('useAuthDispatch must be used within a AuthProvider')
+        throw new Error("useAuthDispatch must be used within a AuthProvider");
     }
 
-    return context
+    return context;
 }
 
-export const AuthProvder = ({children}) => {
-    const [user, dispatch] = useReducer(AuthReducer, initialState)
+export const AuthProvder = ({ children }) => {
+    const [user, dispatch] = useReducer(AuthReducer, initialState);
 
     return (
         <AuthStateContext.Provider value={user}>
@@ -34,5 +34,5 @@ export const AuthProvder = ({children}) => {
                 {children}
             </AuthDispatchContext.Provider>
         </AuthStateContext.Provider>
-    )
-}
+    );
+};
