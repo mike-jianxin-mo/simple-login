@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 
 import { useAuthState } from "../Context";
 
@@ -11,7 +11,7 @@ const AppRoutes = ({ component: Component, path, isPrivate, ...rest }) => {
             path={path}
             render={(props) =>
                 isPrivate && !Boolean(userDetails.token) ? (
-                    <Redirect to={{ pathname: "/login" }} />
+                    <Navigate to={{ pathname: "/login" }} />
                 ) : (
                     <Component {...props} />
                 )
@@ -19,3 +19,5 @@ const AppRoutes = ({ component: Component, path, isPrivate, ...rest }) => {
         />
     );
 };
+
+export default AppRoutes;
